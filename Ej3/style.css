@@ -1,0 +1,23 @@
+body {
+    background-color: lightyellow;
+}
+
+.title {
+    color: tomato;
+    max-width: fit-content;
+}
+
+.title:hover {
+    color: red;
+}
+
+.paragraph {
+    column-count: 3;
+    column-gap: 40px;
+    column-rule: 2px solid tomato;
+}
+
+.paragraph::selection {
+    background-color: aqua;
+    color: green;
+}
