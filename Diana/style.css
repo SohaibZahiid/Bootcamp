@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+main {
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    background-color: lightgray;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: red;
+    display: grid;
+    place-items: center;
+}
+
+.first {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: white;
+    display: grid;
+    place-items: center;
+}
+
+.second {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: red;
+    display: grid;
+    place-items: center;
+}
+
+.third {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: white;
+    display: grid;
+    place-items: center;
+}
+
+.last {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: red;
+    display: grid;
+    place-items: center;
+}
+
+
+/* 
+.container {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: red;
+    display: grid;
+    place-items: center;
+
+}
+
+.container .first {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 20px solid white;
+    display: grid;
+    place-items: center;
+}
+
+
+.container .second {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 20px solid white;
+
+    display: grid;
+    place-items: center;
+}
+
+.container .third {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 20px solid white;
+}
+ */
