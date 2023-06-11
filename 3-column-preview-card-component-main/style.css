@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&display=swap');
+
+:root {
+    --clr-bright-orange: hsl(31, 77%, 52%);
+    --clr-dark-cyan: hsl(184, 100%, 22%);
+    --clr-very-dark-cyan: hsl(179, 100%, 13%);
+    --clr-transparent-white: hsla(0, 0%, 100%, 0.75); 
+    --clr-very-light-gray: hsl(0, 0%, 95%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+}
+
+.container {
+    max-width: 1000px;
+    min-height: 60vh;
+    display: flex;
+    
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+.sedans {
+    background-color: var(--clr-bright-orange);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.suvs {
+    background-color: var(--clr-dark-cyan);
+}
+
+.luxury {
+    background-color: var(--clr-very-dark-cyan);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.icon {
+    width: 100px;
+}
+
+.title {
+    font-size: 48px;
+    text-transform: uppercase;
+    font-family: 'Big Shoulders Display', cursive;
+    color: var(--clr-very-light-gray);
+}
+
+.desc {
+    color: var(--clr-very-light-gray);
+}
+
+.btn {
+    width: 150px;
+    padding: 16px;
+    border-radius: 100px;
+    border: 2px solid var( --clr-very-light-gray);
+    outline: 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.sedans .btn {
+    color: var(--clr-bright-orange);
+}
+
+.suvs .btn {
+    color: var(--clr-dark-cyan);
+}
+
+.luxury .btn {
+    color: var(--clr-very-dark-cyan);
+}
+
+.btn:hover {
+    background-color: transparent;
+    border: 2px solid var( --clr-very-light-gray);
+    color: white;
+}
+
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        max-width: 90%;
+        min-height: 100vh;
+        margin-block: 40px;
+    }
+
+    .category {
+        min-height: 500px;
+    }
+
+    .sedans {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0px;
+    }
+    
+    .suvs {
+        background-color: var(--clr-dark-cyan);
+    }
+    
+    .luxury {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+}
