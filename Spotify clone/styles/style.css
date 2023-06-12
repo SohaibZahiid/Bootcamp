@@ -174,7 +174,7 @@ header .nav-items a:hover {
 }
 
 .featured .play {
-  width: 350px;
+  width: 250px;
 }
 
 .featured .icon {
@@ -209,7 +209,7 @@ header .nav-items a:hover {
   }
 
   .featured .play {
-    width: 300px;
+    /* width: 300px; */
   }
 
   .featured .icon {
