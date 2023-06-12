@@ -47,7 +47,11 @@ header .nav-items a:hover {
   color: var(--clr-primary);
 }
 
-.bars {
+/* .bars {
+  display: none;
+} */
+
+.menu {
   display: none;
 }
 
@@ -191,10 +195,10 @@ header .nav-items a:hover {
     display: none;
   }
   
-  .bars {
+  /* .bars {
     display: block;
     font-size: 25px;
-  }
+  } */
 
   .services-container {
     flex-direction: column;
@@ -206,10 +210,6 @@ header .nav-items a:hover {
     gap: 50px;
     align-items: center;
     text-align: center;
-  }
-
-  .featured .play {
-    /* width: 300px; */
   }
 
   .featured .icon {
