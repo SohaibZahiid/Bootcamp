@@ -216,4 +216,33 @@ header .nav-items a:hover {
     display: none;
   }
 
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .menu .bar {
+    width: 30px;
+    height: 4px;
+    background-color: var(--clr-primary);
+    transform-origin: 0 100%;
+    transition: all 600ms;
+  }
+
+  .menu.active .bar1 {
+    transform: rotate(45deg) translate(-2px, 1px);
+  }
+
+  .menu.active .bar2 {
+    transform: translate(-40px);
+    opacity: 0;
+  }
+
+  .menu.active .bar3 {
+    transform: rotate(-45deg)
+    translate(-2px, 2px);
+  }
+
 }

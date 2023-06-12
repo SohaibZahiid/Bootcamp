@@ -28,7 +28,12 @@
           </li>
         </ul>
       </nav>
-      <i class="bars fa-solid fa-bars"></i>
+      <!-- <i class="bars fa-solid fa-bars"></i> -->
+      <div class="menu">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </div>
       
     </header>
     <section class="hero">
@@ -102,4 +107,10 @@
       latest charts, brand new releases and great playlists for right now. Discover Enjoy new music every Monday with your
       own personal playlist. Or sit back and enjoy Radio.</p> -->
   </body>
+  <script>
+    const menu = document.getElementsByClassName("menu")[0];
+    menu.addEventListener('click', () => {
+      menu.classList.toggle('active')
+    })
+  </script>
 </html>
