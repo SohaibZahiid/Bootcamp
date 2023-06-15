@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -8,11 +9,24 @@
 
 body {
   background: #f9f9f9;
+  font-family: "Roboto", sans-serif;
 }
 
 header {
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  padding: 0.1em calc((100vw - min(1024px, 90%)) / 2);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  padding: 0.1em calc((100vw - min(1200px, 90%)) / 2);
+}
+
+button {
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin-inline: auto;
 }
 
 .header-top {
@@ -38,6 +52,7 @@ header {
   width: 100%;
   outline: none;
   padding-inline: 0.5em;
+  border-radius: 3px;
 }
 .header-top a {
   color: gray;
@@ -51,7 +66,8 @@ header {
   justify-content: space-between;
 }
 .header-bottom nav ul li {
-  padding: 0.5em 1.3em;
+  padding: 0.8em;
+  cursor: pointer;
 }
 .header-bottom nav ul li:hover {
   background-color: lightgray;
@@ -61,4 +77,154 @@ header {
 }
 .header-bottom nav ul li a {
   color: gray;
-}/*# sourceMappingURL=styles.css.map */
+}
+.header-bottom nav .nextprev {
+  display: flex;
+}
+.header-bottom nav .nextprev img {
+  width: 18px;
+  height: 18px;
+}
+
+.newsletter {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  margin-block: 2em;
+  padding-block: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.newsletter p {
+  color: gray;
+}
+.newsletter input {
+  padding: 0.4em 0.5em;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+.newsletter .btn {
+  background-color: hsl(13.33, 69.8%, 51.96%);
+  padding: 0.5em 1.5em;
+  border-radius: 3px;
+  color: white;
+  text-transform: uppercase;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+  grid-gap: 2em;
+}
+main .popular {
+  grid-column: 1/1;
+  grid-row: 1/3;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  padding: 1em;
+}
+main .popular .top {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.8em;
+}
+main .popular .top p {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+main .popular .top img {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+main .popular .app-container .app {
+  border-block: 1px solid lightgray;
+  padding-block: 1em;
+  display: flex;
+  gap: 2em;
+}
+main .popular .app-container .app img {
+  width: 80px;
+  height: 80px;
+}
+main .popular .app-container .app .app-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main .popular .app-container .app .app-content .app-title {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+main .popular .app-container .app .app-content .app-desc {
+  color: gray;
+}
+main .popular .app-container .app .app-content .analytics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .popular .app-container .app .app-content .analytics .ratings {
+  margin-top: 0.5em;
+  display: flex;
+  gap: 0.5em;
+}
+main .popular .app-container .app .app-content .analytics .ratings .votes-container {
+  border: 1px solid lightgray;
+  padding: 0.2em;
+  display: flex;
+  align-items: center;
+}
+main .popular .app-container .app .app-content .analytics .ratings .votes-container img {
+  height: 30px;
+  width: 20px;
+}
+main .popular .app-container .app .app-content .analytics .ratings .comments-container {
+  border: 1px solid lightgray;
+  padding: 0.2em;
+  display: flex;
+  align-items: center;
+}
+main .popular .app-container .app .app-content .analytics .ratings .comments-container img {
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+}
+main .popular .app-container .app .app-content .analytics .ratings .comments-container .comment {
+  color: gray;
+}
+main .popular .app-container .app .app-content .platform {
+  padding: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: gray;
+}
+main .popular .app-container .app .app-content .platform .mobile {
+  background-color: lightgray;
+  padding: 0.4em;
+  color: black;
+}
+
+.kittybot {
+  background-color: aqua;
+  grid-column: 2/-1;
+}
+
+.upcoming {
+  background-color: blueviolet;
+  grid-row: 2/3;
+}
+
+.tweets {
+  background-color: bisque;
+  grid-row: 3/-1;
+  grid-column: 2/-1;
+}
+
+.today {
+  grid-column: 1/1;
+  grid-row: 3/-1;
+}
+
+/*# sourceMappingURL=styles.css.map */
