@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: min(1200px, 90%);
+    margin-inline: auto;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em calc((100vw - min(1024px, 90%)) / 2);
+}
+
+nav {
+    display: flex;
+    gap: 2em;
+    flex: 1;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #38B2AC;
+}
+
+.search {
+    width: 60%;
+    max-width: 400px;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: .5em 1em;
+    border: 1px solid lightgray;
+}
+
+.search::placeholder {
+    color: lightgray;
+    font-size: 1rem;
+}
+
+.search:focus {
+    outline: none;
+    border: 2px solid #38B2AC;
+}
+
+.btn {
+    background: black;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 0;
+    padding: .5em 4em;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #38B2AC;
+}
+
+main {
+    width: 1000px;
+    margin-inline: auto;
+    max-width: 90%;
+}
+
+.card-container {
+    margin-block: 4em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 2em;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    /* gap: 2em; */
+    border-radius: 10px;
+    background-color: #f7fafc;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+
+.img-container {
+    position: relative;
+}
+
+.img-container * {
+    color: white;
+}
+
+.stars {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    padding: .6em;
+    top: 5px;
+    left: 5px;
+}
+
+.favs {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    padding: .6em;
+    top: 5px;
+    right: 5px;
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.content {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.content h4 {
+    color: gray;
+}
+
+.content p {
+    line-height: 1.4;
+    font-size: 1 rem;
+}
+
+.icon-container {
+    display: flex;
+    gap: .5em;
+}
+
+.icon {
+    color: gray;
+}
+
+.content h2 {
+    color: #38B2AC;
+}
