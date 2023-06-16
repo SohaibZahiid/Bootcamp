@@ -10,6 +10,7 @@
 body {
   background: #f9f9f9;
   font-family: "Roboto", sans-serif;
+  font-weight: 300;
 }
 
 header {
@@ -115,8 +116,9 @@ button {
 main {
   display: grid;
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-gap: 2em;
+  margin-bottom: 2em;
 }
 main .popular {
   grid-column: 1/1;
@@ -127,7 +129,8 @@ main .popular {
 main .popular .top {
   display: flex;
   justify-content: space-between;
-  padding-block: 0.8em;
+  align-items: center;
+  padding-bottom: 0.8em;
 }
 main .popular .top p {
   font-size: 1.4rem;
@@ -197,28 +200,149 @@ main .popular .app-container .app .app-content .analytics .ratings .comments-con
 main .popular .app-container .app .app-content .platform {
   padding: 0.2em;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: gray;
 }
 main .popular .app-container .app .app-content .platform .mobile {
-  background-color: lightgray;
-  padding: 0.4em;
+  background-color: #E8E8E8;
+  padding: 0.2em 0.5em;
+  color: black;
+}
+main .today {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  padding: 1em;
+}
+main .today .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.8em;
+}
+main .today .top p {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+main .today .top ul {
+  display: flex;
+  gap: 0.5em;
+}
+main .today .top ul li a {
+  color: gray;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+main .today .top ul li .pop {
+  color: black;
+}
+main .today .posts-container .post {
+  border-block: 1px solid lightgray;
+  padding-block: 1em;
+  display: flex;
+  gap: 2em;
+}
+main .today .posts-container .post img {
+  width: 80px;
+  height: 80px;
+}
+main .today .posts-container .post .post-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main .today .posts-container .post .post-content .post-title {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+main .today .posts-container .post .post-content .post-desc {
+  color: gray;
+}
+main .today .posts-container .post .post-content .analytics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .today .posts-container .post .post-content .analytics .ratings {
+  margin-top: 0.5em;
+  display: flex;
+  gap: 0.5em;
+}
+main .today .posts-container .post .post-content .analytics .ratings .votes-container {
+  border: 1px solid lightgray;
+  padding: 0.2em;
+  display: flex;
+  align-items: center;
+}
+main .today .posts-container .post .post-content .analytics .ratings .votes-container img {
+  height: 30px;
+  width: 20px;
+}
+main .today .posts-container .post .post-content .analytics .ratings .comments-container {
+  border: 1px solid lightgray;
+  padding: 0.2em;
+  display: flex;
+  align-items: center;
+}
+main .today .posts-container .post .post-content .analytics .ratings .comments-container img {
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+}
+main .today .posts-container .post .post-content .analytics .ratings .comments-container .comment {
+  color: gray;
+}
+main .today .posts-container .post .post-content .platform {
+  padding: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: gray;
+}
+main .today .posts-container .post .post-content .platform .mobile {
+  background-color: #E8E8E8;
+  padding: 0.2em 0.5em;
   color: black;
 }
 
 .kittybot {
-  background-color: aqua;
   grid-column: 2/-1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.kittybot .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.kittybot .top .title {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+.kittybot .top img {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.kittybot .desc {
+  color: gray;
+}
+.kittybot .btn {
+  background-color: hsl(13.33, 69.8%, 51.96%);
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  color: white;
+  text-transform: uppercase;
 }
 
 .upcoming {
   background-color: blueviolet;
-  grid-row: 2/3;
+  grid-row: 2/4;
 }
 
 .tweets {
   background-color: bisque;
-  grid-row: 3/-1;
+  grid-row: 4/-1;
   grid-column: 2/-1;
 }
 
