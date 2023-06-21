@@ -25,6 +25,10 @@ img {
     flex-direction: column;
 }
 
+.name {
+    text-transform: capitalize;
+}
+
 .pokemon-image {
     flex: 1;
     position: relative;
