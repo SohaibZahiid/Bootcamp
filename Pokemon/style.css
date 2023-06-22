@@ -68,3 +68,49 @@ img {
     text-align: center;
     text-transform: capitalize;
 }
+
+.pagination {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination ul {
+    display: flex;
+    background-color: orange;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.pagination ul li {
+    list-style: none;
+    line-height: 55px;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #212529;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.pagination ul li.num {
+    height: 75px;
+    width: 60px
+}
+
+.pagination ul li.btn {
+    line-height: 60px;
+}
+
+.pagination ul li.btn:hover {
+    background-color: #fff;
+    color: #212529;
+    box-shadow: 0 0 20px;
+}
+
+.pagination ul li.active {
+    background-color: #fff;
+    color: #212529;
+    box-shadow: 0 0 20px;
+}

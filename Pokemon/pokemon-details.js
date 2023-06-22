@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const baseExpEl = document.querySelector('.base-exp')
     const heightEl = document.querySelector('.height')
     const weightEl = document.querySelector('.weight')
-    const hpEl = document.querySelector('.hp')
+    // const hpEl = document.querySelector('.hp')
 
     const params = new URLSearchParams(window.location.search);
     const pokemonId = params.get("id");
@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
             baseExpEl.innerHTML = data.base_experience
             heightEl.innerHTML = data.height
             weightEl.innerHTML = data.weight
-            hpEl.innerHTML = data.hp
+            // hpEl.innerHTML = data.hp
         });
     };
 
