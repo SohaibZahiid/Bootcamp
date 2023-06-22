@@ -14,7 +14,6 @@ window.addEventListener("DOMContentLoaded", () => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             nameEl.innerHTML = data.name
             imageEl.src = data.sprites.front_default
             baseExpEl.innerHTML = data.base_experience
@@ -25,6 +24,8 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     getPokemon(pokemonId)
+
+    
 
 
 });

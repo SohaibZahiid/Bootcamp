@@ -1,6 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
     const API = "https://pokeapi.co/api/v2/pokemon?limit=50";
 
+    let ALL_POKEMONS
+
     const pokemonContainerEl = document.querySelector(".pokemon-container");
     const searchEl = document.querySelector(".search");
 
@@ -9,6 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
             const response = await fetch(API);
             const data = await response.json();
             const pokemons = data.results;
+            ALL_POKEMONS = pokemons
 
             for (const pokemon of pokemons) {
                 const pokemonDetails = await fetchPokemonDetails(pokemon.url);
@@ -59,12 +62,19 @@ window.addEventListener("DOMContentLoaded", () => {
         const searchValue = e.target.value.trim().toLowerCase();
 
         if (searchValue) {
-            try {
+            const filteredPokemons = ALL_POKEMONS.filter(pokemon => pokemon.name.toLowerCase().includes(searchValue))
+            pokemonContainerEl.innerHTML = "";
+
+            console.log(filteredPokemons);
+            
+            pokemonContainerEl.innerHTML = "";
+
+            filteredPokemons.forEach(async pokemon => {
+
                 const pokemonDetails = await fetchPokemonDetails(
-                    `https://pokeapi.co/api/v2/pokemon/${searchValue}`
+                    `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
                 );
 
-                pokemonContainerEl.innerHTML = "";
 
                 const pokemonEl = createPokemonElement(
                     pokemonDetails.id,
@@ -73,13 +83,42 @@ window.addEventListener("DOMContentLoaded", () => {
                 );
                 pokemonContainerEl.appendChild(pokemonEl);
                 addPokemonClickListener(pokemonEl, pokemonDetails.id);
-            } catch (err) {
-                console.log(err.message);
-            }
+
+            })
+
+
         } else {
-            getPokemons();
+            getPokemons()
         }
-    });
+
+
+
+    })
+
+
+
+    // if (searchValue) {
+    //     try {
+    //         const pokemonDetails = await fetchPokemonDetails(
+    //             `https://pokeapi.co/api/v2/pokemon/${searchValue}`
+    //         );
+
+    //         pokemonContainerEl.innerHTML = "";
+
+    //         const pokemonEl = createPokemonElement(
+    //             pokemonDetails.id,
+    //             pokemonDetails.name,
+    //             pokemonDetails.sprites.front_default
+    //         );
+    //         pokemonContainerEl.appendChild(pokemonEl);
+    //         addPokemonClickListener(pokemonEl, pokemonDetails.id);
+    //     } catch (err) {
+    //         console.log(err.message);
+    //     }
+    // } else {
+    //     getPokemons();
+    // }
+    // });
 
     getPokemons();
 });
