@@ -1,18 +1,26 @@
 window.addEventListener("DOMContentLoaded", () => {
     const API = "https://pokeapi.co/api/v2/pokemon?limit=50";
     let ALL_POKEMONS;
+    let ORIGINAL_POKEMONS; // Store the original list of Pokémon data
     let CURRENT_PAGE = 1;
-    const ITEMS_PER_PAGE = 9;
+    const ITEMS_PER_PAGE = 8;
 
     const pokemonContainerEl = document.querySelector(".pokemon-container");
     const searchEl = document.querySelector(".search");
     const ul = document.querySelector("ul");
+
+    const deletePokemon = (name) => {
+        ALL_POKEMONS = ALL_POKEMONS.filter((p) => p.name != name);
+        ORIGINAL_POKEMONS = ORIGINAL_POKEMONS.filter((p) => p.name != name); // Update the original list as well
+        paginatePokemons();
+    };
 
     const getPokemons = async () => {
         try {
             const response = await fetch(API);
             const data = await response.json();
             ALL_POKEMONS = data.results;
+            ORIGINAL_POKEMONS = data.results; // Store the original list
             paginatePokemons();
         } catch (err) {
             console.log(err);
@@ -36,9 +44,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
         const html = `
         <h4 class="name">${name}</h4>
+        <button class="btn delete" data-name="${name}">Delete</button>
         <img src="${image}" alt="" class="image">
       `;
         pokemonEl.innerHTML = html;
+
+        const deleteBtn = pokemonEl.querySelector(".delete");
+        deleteBtn.addEventListener("click", (e) => {
+            const pokemonName = e.target.dataset.name;
+            deletePokemon(pokemonName);
+        });
 
         return pokemonEl;
     };
@@ -65,7 +80,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 pokemonDetails.sprites.front_default
             );
             pokemonContainerEl.appendChild(pokemonEl);
-            addPokemonClickListener(pokemonEl, pokemonDetails.id);
+            addPokemonClickListener(pokemonEl.querySelector("img"), pokemonDetails.id);
         });
 
         generatePaginationButtons();
@@ -126,21 +141,23 @@ window.addEventListener("DOMContentLoaded", () => {
         const searchValue = e.target.value.trim().toLowerCase();
 
         if (searchValue) {
-            const filteredPokemons = ALL_POKEMONS.filter((pokemon) =>
+            const filteredPokemons = ORIGINAL_POKEMONS.filter((pokemon) =>
                 pokemon.name.toLowerCase().includes(searchValue)
             );
 
             ALL_POKEMONS = filteredPokemons;
             CURRENT_PAGE = 1;
-
             paginatePokemons();
         } else {
-            getPokemons();
+            ALL_POKEMONS = ORIGINAL_POKEMONS; // Restore the original list
+            CURRENT_PAGE = 1; // Reset the current page to 1
+            paginatePokemons();
         }
     });
 
     getPokemons();
 });
+
 
 // window.addEventListener("DOMContentLoaded", () => {
 //     const API = "https://pokeapi.co/api/v2/pokemon?limit=50";

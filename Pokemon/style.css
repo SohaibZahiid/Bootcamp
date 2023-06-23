@@ -36,12 +36,12 @@ img {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 2em;
 
 }
 
 .pokemon {
-    cursor: pointer;
+    
     background-color: orange;
     width: 200px;
     height: 200px;
@@ -56,6 +56,7 @@ img {
 }
 
 .image {
+    cursor: pointer;
     transition: .2s ease-in;
 }
 
@@ -67,6 +68,10 @@ img {
     color: white;
     text-align: center;
     text-transform: capitalize;
+}
+
+.delete {
+    z-index: 99;
 }
 
 .pagination {
