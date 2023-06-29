@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
     const API = "https://pokeapi.co/api/v2/pokemon?limit=50";
-    let ALL_POKEMONS;
-    let ALL_POKEMONS_DETAILS = [];
+    let ALL_POKEMONS = JSON.parse(localStorage.getItem('pokemons')) || [];
+    let ALL_POKEMONS_DETAILS = JSON.parse(localStorage.getItem('pokemons-details')) || [];
     let CURRENT_PAGE = 1;
     const ITEMS_PER_PAGE = 8;
 
@@ -9,8 +9,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const searchEl = document.querySelector(".search");
     const ul = document.querySelector("ul");
 
-    const deletePokemon = (name) => {
-        ALL_POKEMONS = ALL_POKEMONS.filter((p) => p.name != name);
+    const deletePokemon = (id) => {
+        ALL_POKEMONS = ALL_POKEMONS.filter((p) => p.id != id);
+        ALL_POKEMONS_DETAILS = ALL_POKEMONS_DETAILS.filter(p => p.id != id)
+        localStorage.setItem("pokemons", JSON.stringify(ALL_POKEMONS));
+        localStorage.setItem("pokemons-details", JSON.stringify(ALL_POKEMONS_DETAILS));
+
         paginatePokemons();
     };
 
@@ -20,7 +24,10 @@ window.addEventListener("DOMContentLoaded", () => {
         const startIndex = (CURRENT_PAGE - 1) * ITEMS_PER_PAGE;
         const endIndex = startIndex + ITEMS_PER_PAGE;
 
-        const paginatedPokemons = ALL_POKEMONS.slice(startIndex, endIndex);
+        const paginatedPokemons = ALL_POKEMONS_DETAILS.slice(
+            startIndex,
+            endIndex
+        );
 
         paginatedPokemons.forEach(async (pokemon) => {
             const pokemonDetails = ALL_POKEMONS_DETAILS.find(
@@ -34,10 +41,6 @@ window.addEventListener("DOMContentLoaded", () => {
                     pokemonDetails.image
                 );
                 pokemonContainerEl.appendChild(pokemonEl);
-                addPokemonClickListener(
-                    pokemonEl.querySelector("img"),
-                    pokemonDetails.id
-                );
             } else {
                 await getPokemonDetails(pokemon);
             }
@@ -100,6 +103,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const displayFilteredPokemons = (filteredPokemons) => {
         pokemonContainerEl.innerHTML = "";
 
+        ALL_POKEMONS = filteredPokemons;
+
         ALL_POKEMONS_DETAILS = JSON.parse(
             localStorage.getItem("pokemons-details")
         );
@@ -112,7 +117,7 @@ window.addEventListener("DOMContentLoaded", () => {
             pokemonContainerEl.appendChild(pokemonEl);
         });
 
-        generatePaginationButtons();
+        paginatePokemons();
     };
 
     searchEl.addEventListener("input", async (e) => {
@@ -135,15 +140,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
         const html = `
           <h4 class="name">${name}</h4>
-          <button class="btn delete " data-name="${name}">X</button>
+          <button class="btn delete " data-id="${id}">X</button>
           <img src="${image}" alt="" class="image">
         `;
         pokemonEl.innerHTML = html;
 
         const deleteBtn = pokemonEl.querySelector(".delete");
         deleteBtn.addEventListener("click", (e) => {
-            const pokemonName = e.target.dataset.name;
-            deletePokemon(pokemonName);
+            const pid = e.target.dataset.id;
+            deletePokemon(pid);
         });
 
         const imageEl = pokemonEl.querySelector(".image");
@@ -165,6 +170,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 image: data.sprites.front_default,
             };
             ALL_POKEMONS_DETAILS.push(pokemonData);
+
             const pokemonEl = createPokemonDOM(
                 data.id,
                 data.name,
@@ -181,13 +187,14 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     const getAllPokemons = async () => {
-        CURRENT_PAGE = 1; // Reset CURRENT_PAGE to 1
+        CURRENT_PAGE = 1;
 
         if (!checkLocalStorage("pokemons")) {
             try {
                 const res = await fetch(API);
                 const data = await res.json();
                 ALL_POKEMONS = data.results;
+
                 localStorage.setItem("pokemons", JSON.stringify(ALL_POKEMONS));
             } catch (error) {
                 console.log(error);
@@ -196,6 +203,7 @@ window.addEventListener("DOMContentLoaded", () => {
         } else {
             ALL_POKEMONS = JSON.parse(localStorage.getItem("pokemons"));
         }
+
 
         if (!checkLocalStorage("pokemons-details")) {
             for (const pokemon of ALL_POKEMONS) {
@@ -209,6 +217,9 @@ window.addEventListener("DOMContentLoaded", () => {
             ALL_POKEMONS_DETAILS = JSON.parse(
                 localStorage.getItem("pokemons-details")
             );
+
+            ALL_POKEMONS_DETAILS.sort((a, b) => a.id - b.id);
+
             for (const pokemonData of ALL_POKEMONS_DETAILS) {
                 const pokemonEl = createPokemonDOM(
                     pokemonData.id,
