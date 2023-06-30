@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chuck Got Jokes</title>
+    <!-- minify -->
+    <link
+      href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css"
+      rel="stylesheet"
+    />
+    <!-- latest -->
+    <link
+      href="https://unpkg.com/nes.css@latest/css/nes.min.css"
+      rel="stylesheet"
+    />
+    <!-- core style only -->
+    <link
+      href="https://unpkg.com/nes.css/css/nes-core.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+        .container {
+            background-color: lightpink;
+            border-radius: 5px;
+            /* max-width: 1000px; */
+            padding: 2em;
+            margin: 2em;
+            display: flex;
+            gap: 2em;
+        }
+        .img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .nes-container {
+            width: 60%;
+        }
+        .nes-btn {
+            width: 15%;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img class="img" src="chucknorris.jpeg" alt="" />
+      <div class="nes-container is-rounded is-dark joke">
+        <p>Good morning. Thou hast had a good night's sleep, I hope.</p>
+      </div>
+      <button type="button" class="nes-btn is-error btn">Next</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
