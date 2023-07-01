@@ -12,6 +12,11 @@ img {
     width: 100%;
 }
 
+button {
+    border: none;
+    outline: none;
+}
+
 .container {
     margin-block: 5em;
     max-width: 1000px;
@@ -31,6 +36,28 @@ img {
     border: 1px solid lightgray;
     outline: none;
 } */
+
+.types-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.types-container .type {
+    padding: .5em;
+    border-radius: 50px;
+    text-transform: capitalize;
+    color: white;
+}
+
+.types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5em;
+}
 
 .pokemon-container {
     display: flex;
@@ -76,7 +103,7 @@ img {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 2px;
+    padding: 3px 6px;
     border-radius: 5px;
     font-size: 12px;
 }

@@ -6,6 +6,7 @@ interface PokemonDetail {
     weight: number
     baseExperience: number
     image: string
+    type: string
 }
 
 export default PokemonDetail
