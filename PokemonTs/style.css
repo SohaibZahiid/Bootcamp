@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Press Start 2P', cursive;
+    font-family: "Press Start 2P", cursive;
 }
 
 img {
@@ -46,10 +46,18 @@ button {
 }
 
 .types-container .type {
-    padding: .5em;
+    padding: 0.5em;
     border-radius: 50px;
     text-transform: capitalize;
     color: white;
+}
+
+.type:focus {
+    outline: none;
+}
+
+.type.selected {
+    border: 2px solid white;
 }
 
 .types {
@@ -64,11 +72,9 @@ button {
     justify-content: center;
     flex-wrap: wrap;
     gap: 2em;
-
 }
 
 .pokemon {
-    
     background-color: orange;
     width: 200px;
     height: 200px;
@@ -84,7 +90,7 @@ button {
 
 .image {
     cursor: pointer;
-    transition: .2s ease-in;
+    transition: 0.2s ease-in;
 }
 
 .image:hover {
@@ -135,7 +141,7 @@ button {
 
 .pagination ul li.num {
     height: 75px;
-    width: 60px
+    width: 60px;
 }
 
 .pagination ul li.btn {

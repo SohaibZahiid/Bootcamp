@@ -32,7 +32,11 @@ function getPokemons() {
             POKEMONS = JSON.parse(localStorage.getItem('pokemons'));
         }
         //Fetch Pokemons Details
-        getPokemonsDetails(POKEMONS);
+        yield getPokemonsDetails(POKEMONS);
+        // Create Types DOM
+        createTypesDOM(POKEMONS_DETAILS);
+        // Create Pagination DOM
+        createPaginationDOM(POKEMONS_DETAILS.length);
     });
 }
 //Fetches Pokemon Details
@@ -62,7 +66,7 @@ function getPokemonsDetails(pokemons) {
         //Create Pokemon DOM
         createPokemonDOM(POKEMONS_DETAILS);
         //Create Pagination DOM
-        createPaginationDOM();
+        createPaginationDOM(POKEMONS.length);
     });
 }
 //Creates HTML DOM
@@ -120,6 +124,14 @@ searchEl === null || searchEl === void 0 ? void 0 : searchEl.addEventListener('i
     //Empty PokemonContainer First
     pokemonContainerEl.innerHTML = "";
     createPokemonDOM(filteredPokemons);
+    //Reset It To 1 So When I Click On Type It Selects First Pagination
+    CURRENT_PAGE = 1;
+    createPaginationDOM(filteredPokemons.length);
+    //Check If A Type Button Is Selected
+    const selectedTypeBtn = document.querySelector('.types .selected');
+    if (selectedTypeBtn) {
+        selectedTypeBtn.classList.remove('selected');
+    }
 });
 //Deletes Pokemon By Name
 function deletePokemon(name) {
@@ -136,11 +148,11 @@ function deletePokemon(name) {
     localStorage.setItem('pokemons-details', JSON.stringify(POKEMONS_DETAILS));
 }
 //Creates Pagination
-function createPaginationDOM() {
+function createPaginationDOM(totalPokemons) {
     //Empty Pagination Buttons First
     ulEl.innerHTML = "";
     //Calculate Total Pokemon That Will Be Shown Per Page
-    const totalPages = Math.ceil(POKEMONS.length / ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(totalPokemons / ITEMS_PER_PAGE);
     let li = "";
     // //Create Previous Button
     // if (CURRENT_PAGE > 1) {
@@ -202,7 +214,7 @@ function specBtn(e) {
 function createTypesDOM(pokemons) {
     const typeEl = document.querySelector('.types');
     const uniqueTypes = new Set();
-    let html = '';
+    let html = '<button class="btn type selected" style="background-color:#494D5F">all</button>';
     pokemons.forEach(pokemon => {
         //Checks If Types Are Not Repeating
         if (!uniqueTypes.has(pokemon.type)) {
@@ -241,11 +253,33 @@ function createTypesDOM(pokemons) {
         }
     });
     typeEl.innerHTML = html;
-    typeEl === null || typeEl === void 0 ? void 0 : typeEl.addEventListener('click', e => {
+    typeEl === null || typeEl === void 0 ? void 0 : typeEl.addEventListener('click', (e) => {
+        const btns = document.querySelectorAll('button');
         if (e.target.matches('button')) {
-            console.log(e.target.textContent);
+            //Remove Selected Class From All Buttons
+            btns.forEach(btn => btn.classList.remove('selected'));
+            //Add Selected Class To Element
+            e.target.classList.add('selected');
+            const typeSelected = String(e.target.textContent);
+            if (typeSelected == 'all') {
+                //Reset It To 1 So When I Click On Type It Selects First Pagination
+                CURRENT_PAGE = 1;
+                getPokemons();
+            }
+            else {
+                getPokemonsTypes(typeSelected);
+            }
         }
     });
 }
-createTypesDOM(POKEMONS_DETAILS);
+//Gets Pokemons By Selected Type
+function getPokemonsTypes(selected) {
+    const filteredPokemons = POKEMONS_DETAILS.filter(pokemon => {
+        return pokemon.type == selected;
+    });
+    //Reset It To 1 So When I Click On Type It Selects First Pagination
+    CURRENT_PAGE = 1;
+    createPokemonDOM(filteredPokemons);
+    createPaginationDOM(filteredPokemons.length);
+}
 export {};
