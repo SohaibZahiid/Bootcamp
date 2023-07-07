@@ -19,6 +19,7 @@ body {
 }
 
 
+
 .quiz {
     /* background-color: red; */
     display: flex;
@@ -30,13 +31,15 @@ body {
     padding: 2em 4em;
 }
 
-/* .quiz.active {
-    display: flex;
-} */
+.quiz.hidden {
+    display: none;
+}
+
 
 .top {
     display: flex;
     justify-content: space-between;
+    gap: 5em;
     border-bottom: 1px solid black;
     padding-bottom: .5em;
 }
@@ -81,7 +84,7 @@ body {
     cursor: pointer;
 }
 
-.answer.active {
+.answer.selected {
     background-color: red;
 }
 
