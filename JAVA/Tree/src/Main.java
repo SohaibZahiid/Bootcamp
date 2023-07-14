@@ -11,7 +11,7 @@ public class Main {
 			}
 			
 			for (int j = 0; j < i; j++) {
-				System.out.print("* ");
+				System.out.print("\033[102m* \033[0m");
 			}
 			System.out.println();
 			
@@ -20,11 +20,11 @@ public class Main {
 		
 		
 		for (int i = 0; i < 2; i++) {
-			for (int j = 0; j <= 6; j++) {
+			for (int j = 0; j <= 8; j++) {
 				System.out.print(" ");
 			}
-			for (int j = 0; j < 3; j++) {
-				System.out.print(" *");
+			for (int j = 0; j < 4; j++) {
+				System.out.print("\033[100m*\033[0m");
 			}
 
 			System.out.println();
