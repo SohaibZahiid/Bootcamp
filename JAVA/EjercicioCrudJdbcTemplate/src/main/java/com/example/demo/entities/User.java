@@ -9,6 +9,7 @@ public class User implements Serializable{
 	private int id;
 	private String name;
 	private String age;
+	private String nationality;
 
 	public User() {
 		super();
@@ -43,6 +44,14 @@ public class User implements Serializable{
 
 	public void setAge(String age) {
 		this.age = age;
+	}
+
+	public String getNationality() {
+		return nationality;
+	}
+
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
 	}
 
 	@Override
