@@ -3,6 +3,7 @@ package com.nutridish.services;
 import com.nutridish.dto.UserDTO;
 import com.nutridish.entities.UserEntity;
 import com.nutridish.repositories.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     private UserRepository userRepository;
+    private ModelMapper modelMapper;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
     public ResponseEntity<String> register(UserEntity user) {
@@ -36,7 +39,8 @@ public class UserService {
         UserEntity user = userRepository.findByUsername(username);
 
         if (user != null && user.getPassword().equals(password)) {
-            return ResponseEntity.ok(null);
+            UserDTO mappedUser = modelMapper.map(user, UserDTO.class);
+            return ResponseEntity.ok(mappedUser);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }

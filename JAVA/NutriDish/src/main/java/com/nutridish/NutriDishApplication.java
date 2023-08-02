@@ -1,7 +1,9 @@
 package com.nutridish;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class NutriDishApplication {
@@ -10,4 +12,8 @@ public class NutriDishApplication {
         SpringApplication.run(NutriDishApplication.class, args);
     }
 
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 }
