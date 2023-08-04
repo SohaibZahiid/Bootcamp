@@ -5,6 +5,7 @@
 
   --clr-white: #fff;
   --clr-black: #000;
+  --clr-gray: #757575;
 
   --clr-text: #2b2c34;
 
@@ -21,6 +22,10 @@
   text-decoration: none;
 }
 
+img {
+  width: 100%;
+  height: 100%;
+}
 
 .container {
   width: 90%;
