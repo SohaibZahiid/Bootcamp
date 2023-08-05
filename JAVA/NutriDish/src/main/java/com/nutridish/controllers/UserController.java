@@ -6,17 +6,15 @@ import com.nutridish.entities.UserEntity;
 import com.nutridish.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 
 @RestController
 @RequestMapping("/api")
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -34,6 +32,15 @@ public class UserController {
         String password = user.getPassword();
 
         return userService.login(username, password);
+    }
 
+    @GetMapping("/user/{id}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+        return userService.getUserById(id);
+    }
+
+    @PutMapping("/user/{id}/update")
+    public ResponseEntity<String> updateUser(@PathVariable Long id, @Valid @RequestBody UserEntity user) {
+        return userService.updateUser(id, user);
     }
 }
